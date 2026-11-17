@@ -149,6 +149,12 @@ public class TripPoint {
 		fileScanner.close();
 	}
 	
+	/**
+	 * Finds and returns the number of stops in the trip ArrayList using the first
+	 * @return number of stops detected
+	 * @throws FileNotFoundException if file not found
+	 * @throws IOException if I/O error occurs
+	 */
 	public static int h1StopDetection() throws FileNotFoundException, IOException {
 		if (trip == null || trip.isEmpty()) {
 			readFile("triplog.csv");
@@ -171,6 +177,12 @@ public class TripPoint {
 		return stops;
 	}
 	
+	/**
+	 * Finds and returns the number of stops in the trip ArrayList using the second
+	 * @return number of stops detected
+	 * @throws FileNotFoundException file is not found
+	 * @throws IOException for I/O error occur
+	 */
 	public static int h2StopDetection() throws FileNotFoundException, IOException {
 		if (trip == null || trip.isEmpty()) {
 			readFile("triplog.csv");
@@ -215,15 +227,28 @@ public class TripPoint {
 		
 		return stops;
 	}
-
+	
+	/**
+	 * finds and returns the amount of time spent moving in hours
+	 * @return moving time in hours
+	 */
 	public static double movingTime() {
 		return (movingTrip.size() - 1) * 5.0 / 60.0;
 	}
-
+	
+	/**
+	 * returns the amount of time spent stopped in hours
+	 * @return stopped time in hours
+	 */
 	public static double stoppedTime() {
 		return totalTime() - movingTime();
 	}
 
+	/**
+	 * finds and returns the average speed over the course of the trip only considering
+	 * the moving points in km/hr
+	 * @return average moving speed in km/hr
+	 */
 	public static double avgMovingSpeed() {
 		double totalMovingDistance = 0.0;
 		for (int i = 1; i < movingTrip.size(); i++) {
