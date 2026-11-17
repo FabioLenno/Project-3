@@ -148,5 +148,25 @@ public class TripPoint {
 		// close scanner
 		fileScanner.close();
 	}
+	
+	public static int h1StopDetection() throws FileNotFoundException, IOException {
+		return 0;
+	}
+	
+	public static int h2StopDetection() throws FileNotFoundException, IOException {
+		return 0;
+	}
+
+	public static double movingTime() {
+		return 0.0;
+	}
+
+	public static double stoppedTime() {
+		return 0.0;
+	}
+
+	public static double avgMovingSpeed() {
+		return 0.0;
+	}
 
 }
