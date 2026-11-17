@@ -206,6 +206,13 @@ public class TripPoint {
 				}
 			}
 		}
+		
+		if(stopZone.size() >= 3) {
+			stops += stopZone.size();
+		} else {
+			movingTrip.addAll(stopZone);
+		}
+		
 		return stops;
 	}
 
