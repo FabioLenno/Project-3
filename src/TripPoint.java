@@ -184,7 +184,11 @@ public class TripPoint {
 	}
 
 	public static double avgMovingSpeed() {
-		return 0.0;
+		double totalMovingDistance = 0.0;
+		for (int i = 1; i < movingTrip.size(); i++) {
+			totalMovingDistance += haversineDistance(movingTrip.get(i -1), movingTrip.get(i));
+		}
+		return totalMovingDistance / movingTime();
 	}
 
 }
