@@ -176,7 +176,7 @@ public class TripPoint {
 	}
 
 	public static double movingTime() {
-		return 0.0;
+		return (movingTrip.size() - 1) * 5.0 / 60.0;
 	}
 
 	public static double stoppedTime() {
