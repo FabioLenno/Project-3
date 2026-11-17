@@ -180,7 +180,7 @@ public class TripPoint {
 	}
 
 	public static double stoppedTime() {
-		return 0.0;
+		return totalTime() - movingTime();
 	}
 
 	public static double avgMovingSpeed() {
