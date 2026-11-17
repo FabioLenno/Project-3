@@ -11,6 +11,8 @@ public class TripPoint {
 	private int time;	// time in minutes
 	
 	private static ArrayList<TripPoint> trip;	// ArrayList of every point in a trip
+	
+	private static ArrayList<TripPoint> movingTrip; 
 
 	// default constructor
 	public TripPoint() {
@@ -44,6 +46,10 @@ public class TripPoint {
 	// returns a copy of trip ArrayList
 	public static ArrayList<TripPoint> getTrip() {
 		return new ArrayList<>(trip);
+	}
+	
+	public static ArrayList<TripPoint> getMovingTrip() {
+		return new ArrayList<>(movingTrip);
 	}
 	
 	// uses the haversine formula for great sphere distance between two points
