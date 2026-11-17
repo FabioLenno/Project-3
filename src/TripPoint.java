@@ -150,7 +150,25 @@ public class TripPoint {
 	}
 	
 	public static int h1StopDetection() throws FileNotFoundException, IOException {
-		return 0;
+		if (trip == null || trip.isEmpty()) {
+			readFile("triplog.csv");
+		}
+		
+		movingTrip = new ArrayList<TripPoint>();
+		int stops = 0;
+		
+		if (!trip.isEmpty()) {
+			movingTrip.add(trip.get(0));
+			for (int i = 1; i < trip.size(); i++) {
+				double distance = haversineDistance(trip.get(i-1), trip.get(i));
+				if (distance <= 0.6) {
+					stops++;
+				} else {
+					movingTrip.add(trip.get(i));
+				}
+			}
+		}
+		return stops;
 	}
 	
 	public static int h2StopDetection() throws FileNotFoundException, IOException {
