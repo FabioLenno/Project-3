@@ -172,7 +172,41 @@ public class TripPoint {
 	}
 	
 	public static int h2StopDetection() throws FileNotFoundException, IOException {
-		return 0;
+		if (trip == null || trip.isEmpty()) {
+			readFile("triplog.csv");
+		}
+		
+		movingTrip = new ArrayList<TripPoint>();
+		ArrayList<TripPoint> stopZone = new ArrayList<TripPoint>();
+		int stops = 0;
+		double stopRadius = 0.5;
+		
+		for (TripPoint current : trip) {
+			if (stopZone.isEmpty()) {
+				stopZone.add(current);
+			} else {
+				boolean withinRadius = false;
+				for (TripPoint zonePoint : stopZone) {
+					if (haversineDistance(zonePoint, current) <= stopRadius) {
+						withinRadius = true;
+						break;
+					}
+				}
+				
+				if (withinRadius) {
+					stopZone.add(current);
+				} else {
+					if (stopZone.size() >= 3) {
+						stops += stopZone.size();
+					} else {
+						movingTrip.addAll(stopZone);
+					}
+					stopZone.clear();
+					stopZone.add(current);
+				}
+			}
+		}
+		return stops;
 	}
 
 	public static double movingTime() {
